@@ -32,3 +32,9 @@ hs_err_pid*
 /build
 /captures
 .externalNativeBuild
+/.idea
+/target
+.ideaDataSources/
+.dataSources/
+/*.iws
+/*.ipr
