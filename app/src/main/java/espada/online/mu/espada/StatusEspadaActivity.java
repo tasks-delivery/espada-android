@@ -105,8 +105,8 @@ public class StatusEspadaActivity extends BaseActivity {
 
                 if(!trigger){
                     updateTextView("Death");
-                }else {
                     setNotification();
+                }else {
                     updateTextView("Live");
                 }
 
