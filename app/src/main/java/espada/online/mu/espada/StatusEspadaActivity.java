@@ -35,6 +35,10 @@ public class StatusEspadaActivity extends BaseActivity {
 
     private String name;
 
+    private Handler handler = new Handler();
+
+    private Runnable runnable;
+
     public Response sendRequest(String url){
         OkHttpClient client = new OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
@@ -64,11 +68,17 @@ public class StatusEspadaActivity extends BaseActivity {
         statusHendler();
     }
 
-    private void statusHendler(){
-        Handler handler = new Handler();
-        int delay = 60000;
+    @Override
+    public void onDestroy() {
+        handler.removeCallbacks(runnable);
+        super.onDestroy();
 
-        handler.postDelayed(new Runnable(){
+    }
+
+    private void statusHendler(){
+        handler = new Handler();
+        int delay = 60000;
+        handler.postDelayed(runnable = new Runnable(){
             public void run(){
 
                 new Thread(new Runnable(){
